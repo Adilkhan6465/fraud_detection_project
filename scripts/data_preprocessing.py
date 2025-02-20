@@ -1,18 +1,20 @@
 import pandas as pd
+import os
 
-# Dataset Load
-df = pd.read_csv('../data/fraud_data_2023_24.csv')
+# Script ke current directory ka path lein
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Missing Values Handle
-df.fillna(method='ffill', inplace=True)
+# Data file ka full path banayein
+data_file_path = os.path.join(script_dir, '../data/Fraud data FY 2023-24 for B&CC.csv')
 
-# Unnecessary Columns Drop
-df.drop(columns=['Unnamed: 0'], errors='ignore', inplace=True)
+# CSV file load karein
+df = pd.read_csv(data_file_path)
 
-# Categorical Variables Encoding
-df = pd.get_dummies(df, drop_first=True)
+# Data ke pehle kuch rows print karein
+print(df.head())
 
-# Cleaned Data Save
-df.to_csv('../data/cleaned_fraud_data.csv', index=False)
+# Cleaned data ko new CSV file mein save karein
+cleaned_file_path = os.path.join(script_dir, '../data/cleaned_fraud_data.csv')
+df.to_csv(cleaned_file_path, index=False)
 
-print("Data Preprocessing Completed!")
+print(f"Cleaned data saved at: {cleaned_file_path}")
