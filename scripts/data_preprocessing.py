@@ -10,10 +10,15 @@ data_file_path = os.path.join(script_dir, '../data/Fraud data FY 2023-24 for B&C
 # CSV file load karein
 df = pd.read_csv(data_file_path)
 
-# Data ke pehle kuch rows print karein
+# Pehle 5 rows print karein
 print(df.head())
 
-# Cleaned data ko new CSV file mein save karein
+# Numeric columns me se commas remove karein
+num_cols = ["Annual Income", "Premium", "POLICY SUMASSURED"]  # Apne dataset ke numeric columns check karein
+for col in num_cols:
+    df[col] = df[col].astype(str).str.replace(",", "").astype(float)
+
+# Cleaned data ko new CSV file me save karein
 cleaned_file_path = os.path.join(script_dir, '../data/cleaned_fraud_data.csv')
 df.to_csv(cleaned_file_path, index=False)
 

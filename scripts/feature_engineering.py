@@ -1,19 +1,41 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler, MinMaxScaler
-df = pd.read_csv("tumhara_dataset.csv")  # Replace with actual dataset name
-df.drop(columns=["Dummy Policy No", "Policy Payment Term", "Bank code"], inplace=True)
-label_enc = LabelEncoder()
-df["MARITALSTATUS"] = label_enc.fit_transform(df["MARITALSTATUS"])
-df["INDIV_REQUIREMENTFLAG"] = label_enc.fit_transform(df["INDIV_REQUIREMENTFLAG"])
-df = pd.get_dummies(df, columns=["OCCUPATION", "PREMIUMPAYMENTMODE", "NOMINEE_RELATION"], drop_first=True)
-scaler = MinMaxScaler()
-df[["ANNUAL_INCOME", "Premium", "ASSURED_AGE", "Policy Sum Assured"]] = scaler.fit_transform(
-    df[["ANNUAL_INCOME", "Premium", "ASSURED_AGE", "Policy Sum Assured"]]
-)
-print(df.head())
+import os
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+# Script ka current directory path lo
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
-df.to_csv("processed_data.csv", index=False)
-print("✅ Feature Engineering Complete! Processed dataset saved as processed_data.csv")
+# Cleaned data ka path set karo
+data_file_path = os.path.join(script_dir, '../data/cleaned_fraud_data.csv')
+
+# Data load karo
+df = pd.read_csv(data_file_path)
+# Numerical columns ko identify karo
+numerical_cols = df.select_dtypes(include=['int64', 'float64']).columns
+
+# Standard Scaler apply karo
+scaler = StandardScaler()
+df[numerical_cols] = scaler.fit_transform(df[numerical_cols])
+# Categorical columns identify karo
+categorical_cols = df.select_dtypes(include=['object']).columns
+
+# Label Encoding apply karo
+encoder = LabelEncoder()
+for col in categorical_cols:
+    df[col] = encoder.fit_transform(df[col])
+    # Correlation threshold define karo
+correlation_threshold = 0.01  # Weakly correlated features remove karne ke liye
+
+# Highly correlated features select karo
+correlation_matrix = df.corr()
+highly_correlated_features = correlation_matrix.index[abs(correlation_matrix["Fraud Category"]) > correlation_threshold]
+
+# Sirf important features ko retain karo
+df = df[highly_correlated_features]
+# Feature engineered data ka path set karo
+feature_engineered_file_path = os.path.join(script_dir, '../data/feature_engineered_fraud_data.csv')
+
+# Data save karo
+df.to_csv(feature_engineered_file_path, index=False)
+
+print(f"Feature engineered data saved at: {feature_engineered_file_path}")
