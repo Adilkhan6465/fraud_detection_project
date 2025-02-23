@@ -19,3 +19,21 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    prediction_mapping = {
+    0: "Not Fraud",
+    1: "Potential Fraud",
+    2: "Highly Fraudulent"
+}
+
+result = model.predict(input_data)  # Jo bhi prediction return ho raha hai
+response = {"fraud_prediction": prediction_mapping.get(result[0], "Unknown")}
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json()
+    if isinstance(data, list):  # Agar multiple inputs aaye
+        predictions = [model.predict([d])[0] for d in data]
+        response = [{"fraud_prediction": prediction_mapping.get(pred, "Unknown")} for pred in predictions]
+    else:  # Single input
+        prediction = model.predict([data])[0]
+        response = {"fraud_prediction": prediction_mapping.get(prediction, "Unknown")}
+    return jsonify(response)

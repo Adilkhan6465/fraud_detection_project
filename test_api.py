@@ -11,7 +11,7 @@ data = {
     "Premium": 12000,
     "PREMIUMPAYMENTMODE": 0,  # Annual ka encoded value
     "Annual Income": 800000,
-    "HOLDERMARITALSTATUS": 1,  # Married = 1
+    "HOLDERMARITALSTATUS": 0,  # Married = 1
     "INDIV_REQUIREMENTFLAG": 1,  # Y = 1, N = 0
     "Policy Term": 20,
     "Policy Payment Term": 15,
