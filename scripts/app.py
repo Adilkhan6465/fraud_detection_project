@@ -25,8 +25,7 @@ if __name__ == '__main__':
     2: "Highly Fraudulent"
 }
 
-result = model.predict(input_data)  # Jo bhi prediction return ho raha hai
-response = {"fraud_prediction": prediction_mapping.get(result[0], "Unknown")}
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
