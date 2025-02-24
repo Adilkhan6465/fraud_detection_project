@@ -1,0 +1,25 @@
+2025-02-24 10:28:10,085 - INFO - \u2705 Flask API started...
+2025-02-24 10:28:10,095 - INFO - \u2705 Flask API started...
+2025-02-24 10:28:13,537 - WARNING -  * Debugger is active!
+2025-02-24 10:28:13,542 - INFO -  * Debugger PIN: 201-846-716
+2025-02-24 10:28:13,700 - WARNING -  * Debugger is active!
+2025-02-24 10:28:13,704 - INFO -  * Debugger PIN: 201-846-716
+2025-02-24 10:29:35,338 - INFO - \u2705 Flask API started...
+2025-02-24 10:29:38,845 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-24 10:29:38,845 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-24 10:29:38,852 - INFO -  * Restarting with stat
+2025-02-24 10:29:41,040 - INFO - \u2705 Flask API started...
+2025-02-24 10:29:44,052 - WARNING -  * Debugger is active!
+2025-02-24 10:29:44,057 - INFO -  * Debugger PIN: 201-846-716
+2025-02-24 10:31:35,788 - INFO - \u2705 Flask API started...
+2025-02-24 10:31:39,059 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-24 10:31:39,059 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-24 10:31:39,065 - INFO -  * Restarting with stat
+2025-02-24 10:31:41,741 - INFO - \u2705 Flask API started...
+2025-02-24 10:31:44,757 - WARNING -  * Debugger is active!
+2025-02-24 10:31:44,760 - INFO -  * Debugger PIN: 201-846-716
+2025-02-24 10:33:17,253 - INFO - \U0001f4e9 Received request: {'Dummy Policy No': 123456, 'ASSURED_AGE': 35, 'NOMINEE_RELATION': 1, 'OCCUPATION': 2, 'POLICY SUMASSURED': 500000, 'Premium': 12000, 'PREMIUMPAYMENTMODE': 0, 'Annual Income': 800000, 'HOLDERMARITALSTATUS': 0, 'INDIV_REQUIREMENTFLAG': 1, 'Policy Term': 20, 'Policy Payment Term': 15, 'CORRESPONDENCECITY': 3, 'CORRESPONDENCESTATE': 2, 'CORRESPONDENCEPOSTCODE': 110001, 'CHANNEL': 1, 'Bank code': 5, 'Date of Death': 20240615, 'INTIMATIONDATE': 20240620, 'STATUS': 1, 'SUB_STATUS': 2}
+2025-02-24 10:33:17,283 - INFO - \u2705 Prediction: 2
+2025-02-24 10:33:17,285 - INFO - 127.0.0.1 - - [24/Feb/2025 10:33:17] "POST /predict HTTP/1.1" 200 -
