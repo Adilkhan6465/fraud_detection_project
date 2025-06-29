@@ -1,10 +1,12 @@
-# 🛡️ Fraud Detection using Machine Learning
+# 🛡️ Insurance Fraud Detection using Machine Learning
 
 This project is focused on building a machine learning model to detect fraudulent financial transactions based on patterns in the data.
 
 ## 📌 Problem Statement
 
-To detect and classify transactions as fraudulent or genuine using supervised learning techniques. Fraudulent transactions are rare but critical to detect, especially in financial and e-commerce domains like Flipkart.
+To detect and classify **insurance claims** as fraudulent or genuine using supervised learning techniques.
+Insurance frauds are often hidden and lead to huge financial losses in the insurance sector.  
+The goal is to train a machine learning model to recognize patterns that typically indicate fraud.
 
 ## 🧠 Technologies & Libraries Used
 
